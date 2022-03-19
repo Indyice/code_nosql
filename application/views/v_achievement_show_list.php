@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Activity</title>
+    <title>Achievement</title>
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/style.css" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -18,7 +18,7 @@
     <div class="container pt-4">
         <div class="card">
             <div class="card-header bg-primary text-white">
-                <h1>Activity</h1>
+                <h1>Achievement</h1>
             </div>
             <div class="card-body">
                 <div>
@@ -46,10 +46,10 @@
               ?>
                             <tr class="<?php echo $col_class; ?>">
                                 <td>
-                                    <?php echo $ams->ach_event->eve_name; ?>
+                                    <?php echo $ams->ach_name; ?>
                                 </td>
                                 <td>
-                                    <?php echo $ams->ach_event->eve_point; ?>
+                                    <?php echo $ams->ach_point; ?>
                                 </td>
                                 <td>
                                     <?php echo anchor('/usercontroller/update/' . $ams->_id, 'Update'); ?>

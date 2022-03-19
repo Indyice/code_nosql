@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 //เชื่อมต่อ mongoDB
-class Da_activity extends CI_Model{
+class Da_achievement extends CI_Model{
     private $database = 'nosqldemo';
 	private $collection = 'ams';
 	private $conn;//ตัวแปรสำหรับ connect database
@@ -11,4 +11,5 @@ class Da_activity extends CI_Model{
 		$this->load->library('mongodb');
 		$this->conn = $this->mongodb->getConn();
 	}
+
 }
