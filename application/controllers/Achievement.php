@@ -8,13 +8,23 @@
             $this->load->model('M_achievement');
 
         }
+
+        function output($view, $data = null){
+            $this->load->view('template/header');
+            $this->load->view($view, $data);
+            $this->load->view('template/js');
+            $this->load->view('template/footer');
+        }
+
         function show_list()
         {
-            $data['act'] = $this->M_achievement->get_activity_list();
-            $this->load->view('v_achievement_show_list', $data);
+            $data['ach'] = $this->M_achievement->get_achievement_list();
+            $this->output('v_achievement_show_list', $data);
+            // $this->load->view('test');
         }
+        
         function update($_id){
-            $data['act'] = $this->M_achievement->get_activity($_id);
+            $data['ach'] = $this->M_achievement->get_achievement($_id);
             $this->load->view('v_achievement_update', $data);
         }
     }

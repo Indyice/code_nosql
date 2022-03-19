@@ -13,7 +13,7 @@ class M_achievement extends Da_achievement{
 		$this->conn = $this->mongodb->getConn();
 	}
     
-	function get_activity_list() {
+	function get_achievement_list() {
 		try {
 			$filter = [];
 			$query = new MongoDB\Driver\Query($filter);
@@ -26,7 +26,7 @@ class M_achievement extends Da_achievement{
 		}
 	}
 	
-	function get_activity($_id) {
+	function get_achievement($_id) {
 		try {
 			$filter = ['_id' => new MongoDB\BSON\ObjectId($_id)];
 			$query = new MongoDB\Driver\Query($filter);

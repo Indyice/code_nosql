@@ -22,12 +22,12 @@
             </div>
             <div class="card-body">
                 <div>
-                    <?php echo anchor('/usercontroller/create', 'Create User');?>
+                    <?php echo anchor('/Achievement/create', 'Create Achievement');?>
                 </div>
 
                 <div id="body">
                     <?php
-          if ($act) {
+          if ($ach) {
         ?>
                     <table class="datatable">
                         <thead>
@@ -40,7 +40,7 @@
                         <tbody>
                             <?php
               $i = 0;
-              foreach ($act as $ams) {
+              foreach ($ach as $ams) {
                 $col_class = ($i % 2 == 0 ? 'odd_col' : 'even_col');
                 $i++;
               ?>
@@ -52,9 +52,9 @@
                                     <?php echo $ams->ach_point; ?>
                                 </td>
                                 <td>
-                                    <?php echo anchor('/usercontroller/update/' . $ams->_id, 'Update'); ?>
+                                    <?php echo anchor('/Achievement/update/' . $ams->_id, 'Update'); ?>
 
-                                    <?php echo anchor('/usercontroller/delete/' . $ams->_id, 'Delete', array('onclick' => "return confirm('Do you want delete this record')")); ?>
+                                    <?php echo anchor('/Achievement/delete/' . $ams->_id, 'Delete', array('onclick' => "return confirm('Do you want delete this record')")); ?>
                                 </td>
                             </tr>
                             <?php
@@ -70,8 +70,6 @@
                 </div>
             </div>
         </div>
-
-
 
     </div>
 
