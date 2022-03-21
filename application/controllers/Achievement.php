@@ -23,8 +23,25 @@
             // $this->load->view('test');
         }
         
-        function update($_id){
-            $data['ach'] = $this->M_achievement->get_achievement($_id);
-            $this->load->view('v_achievement_update', $data);
+        function create(){
+            if($this->input->post('submit')){
+                $this->form_validation->set_rules('ach_name','Name achievement', 'trim|required');
+                $this->form_validation->set_rules('ach_point','Point', 'trim|required');
+
+                if($this->form_validation->run() !== false){
+                    $result = $this->M_achievement->create_achievement($this->input->post('ach_name'), $this->input->post('ach_point'));
+                        if($result === true){
+                            redirect('Achievement/show_list');
+                        }else{
+                            $data['error'] = 'Error occurred during updating data';
+                            $this->output('v_achievement_create', $data);
+                        }  
+                }else{
+                    $data['error'] = 'เกิดปัญหา กรุณาตรวจสอบข้อมูลที่บันทึก';
+                    $this->output('v_achievement_create', $data);
+                }
+            }else{
+                $this->output('v_achievement_create');
+            }
         }
     }
