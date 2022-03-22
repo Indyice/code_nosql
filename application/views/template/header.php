@@ -60,15 +60,19 @@
             </div>
 
             <!-- Nav Item - Activity Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?php if ($_SESSION['menu'] == 'activity_show_list' || $_SESSION['menu'] == 'activity_create') echo 'active' ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-bullseye"></i>
                     <span>Activity</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse <?php if ($_SESSION['menu'] == 'activity_show_list' || $_SESSION['menu'] == 'activity_create') echo 'show' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Activity List</a>
-                        <a class="collapse-item" href="cards.html">Add Activity</a>
+                        <div class="collapse-item <?php if ($_SESSION['menu'] == 'activity_show_list') echo 'active' ?>">
+                            <?php echo anchor('/Activity/show_list', 'Activity List', array('style'=> 'text-decoration: none'));?>
+                        </div>
+                        <div class="collapse-item <?php if ($_SESSION['menu'] == 'activity_create') echo 'active' ?>">
+                            <?php echo anchor('/Activity/create', 'Add Activity', array('style'=> 'text-decoration: none'));?>
+                        </div>
                     </div>
                 </div>
             </li>

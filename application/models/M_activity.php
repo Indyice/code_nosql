@@ -4,7 +4,7 @@ include_once 'Da_activity.php';
 
 class M_activity extends Da_activity{
     private $database = 'nosqldemo';
-	private $collection = 'ams';
+	private $collection = 'act';
 	private $conn;//ตัวแปรสำหรับ connect database
 
 	function __construct() {
