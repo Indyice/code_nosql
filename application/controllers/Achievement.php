@@ -18,12 +18,18 @@
 
         function show_list()
         {
+            session_start();
+            $_SESSION['menu'] = 'achievement_show_list';
+
             $data['ach'] = $this->M_achievement->get_achievement_list();
             $this->output('v_achievement_show_list', $data);
             // $this->load->view('test');
         }
         
         function create(){
+            session_start();
+            $_SESSION['menu'] = 'achievement_create';
+            
             if($this->input->post('submit')){
                 $this->form_validation->set_rules('ach_name','Name achievement', 'trim|required');
                 $this->form_validation->set_rules('ach_point','Point', 'trim|required');

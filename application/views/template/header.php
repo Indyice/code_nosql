@@ -21,7 +21,9 @@
     <link href="<?php echo base_url().'assets/template/startbootstrap-sb-admin-2-gh-pages'?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
+<script>
 
+</script>
 
 
 <body>
@@ -43,7 +45,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?php if ($_SESSION['menu'] == 'dashboard') echo 'active' ?>">
                 <a class=" nav-link" href="http://[::1]/code_nosql/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -57,7 +59,7 @@
                 MANAGEMENT
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Activity Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-bullseye"></i>
@@ -71,17 +73,20 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <!-- Nav Item - Achievement Menu -->
+            <li class="nav-item <?php if ($_SESSION['menu'] == 'achievement_show_list' || $_SESSION['menu'] == 'achievement_create') echo 'active' ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fa fa-trophy"></i>
                     <span>Achievement</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse <?php if ($_SESSION['menu'] == 'achievement_show_list' || $_SESSION['menu'] == 'achievement_create') echo 'show' ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <?php echo anchor('/Achievement/show_list', 'Achievement List', array('class'=> 'collapse-item'));?>
-                        <!-- <a class="collapse-item" href="">Achievement List</a> -->
-                        <a class="collapse-item" href="cards.html">Add Achievement</a>
+                        <div class="collapse-item <?php if ($_SESSION['menu'] == 'achievement_show_list') echo 'active' ?>">
+                            <?php echo anchor('/Achievement/show_list', 'Achievement List', array('style'=> 'text-decoration: none'));?>
+                        </div>
+                        <div class="collapse-item <?php if ($_SESSION['menu'] == 'achievement_create') echo 'active' ?>">
+                            <?php echo anchor('/Achievement/create', 'Add Achievement', array('style'=> 'text-decoration: none'));?>
+                        </div>
                     </div>
                 </div>
             </li>

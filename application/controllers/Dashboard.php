@@ -17,6 +17,9 @@
         }
 
         function show_dashboard(){
+            session_start();
+            $_SESSION['menu'] = 'dashboard';
+            
             $this->output('v_dashboard');           
         }
         

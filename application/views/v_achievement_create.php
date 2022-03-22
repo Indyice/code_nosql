@@ -4,7 +4,7 @@
             <div class="modal-body p-0">
                 <div class="card card-plain">
                     <div class="card-header pb-0 text-left">
-                        <h3 class="font-weight-bolder text-info text-gradient">Create User</h3>
+                        <h3 class="font-weight-bolder text-info text-gradient">Create Achievement</h3>
                     </div>
                     <div class="card-body">
 

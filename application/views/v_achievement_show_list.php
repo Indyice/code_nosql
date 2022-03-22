@@ -2,9 +2,11 @@
 <div class="container-fluid pt-4">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Achievement</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Achievement</h1>
 
-    <?php echo anchor('/Achievement/create', 'Add', array('class' => ""));?>
+        <?php echo anchor('/Achievement/create', 'Add Achievement',array('class'=>'btn btn-primary'));?>
+    </div>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -47,9 +49,10 @@
                             <td><?php echo $ams->ach_name; ?></td>
                             <td><?php echo $ams->ach_point; ?></td>
                             <td><?php echo $ams->ach_status; ?></td>
-                            <td><?php echo anchor('/Achievement/update/' . $ams->_id, 'Edit'); ?>
-
-                                <?php echo anchor('/Achievement/delete/' . $ams->_id, 'Delete', array('onclick' => "return confirm('Do you want delete this record')")); ?></td>
+                            <td>
+                                <?php echo anchor('/Achievement/update/' . $ams->_id, 'Edit'); ?>
+                                <?php echo anchor('/Achievement/delete/' . $ams->_id, 'Delete', array('onclick' => "return confirm('Do you want delete this record')")); ?>
+                            </td>
                         </tr>
                         <?php
             }
