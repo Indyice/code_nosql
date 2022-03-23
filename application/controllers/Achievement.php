@@ -6,6 +6,7 @@
         {
             parent :: __construct();
             $this->load->model('M_achievement');
+            $this->load->model('M_activity');
 
         }
 
@@ -31,8 +32,8 @@
             $_SESSION['menu'] = 'achievement_create';
             
             if($this->input->post('submit')){
-                $this->form_validation->set_rules('ach_name','Name achievement', 'trim|required');
-                $this->form_validation->set_rules('ach_point','Point', 'trim|required');
+                $this->form_validation->set_rules('act_name','Name achievement', 'trim|required');
+                $this->form_validation->set_rules('act_point','Point', 'trim|required');
 
                 if($this->form_validation->run() !== false){
                     $result = $this->M_achievement->create_achievement($this->input->post('ach_name'), $this->input->post('ach_point'));
@@ -82,5 +83,28 @@
                 $this->M_achievement->delete_achievement($_id);
             }
             redirect('Achievement/show_list');
+        }
+
+        function get_act_by_id($id_ach){
+            session_start();
+            $_SESSION['menu'] = 'achievement_detail';
+            // $id_ach = "623a2bfaa5470000e30078c5";
+            $data['ach'] = $this->M_achievement->get_achievement($id_ach);
+            
+            $id_act = $data['ach']->act_id;
+            // echo '<pre>';
+            // print_r($id_act);
+            // echo '</pre>';
+            if(isset($id_act)){
+                $data['act'] = [];
+                foreach($id_act as $value){
+                    $data_act = $this->M_activity->get_activity($value);
+                    array_push($data['act'], $data_act);
+                }   
+                $this->output('v_achievement_detail', $data);
+            }else{
+                $this->output('v_achievement_detail');
+            }
+                    
         }
     }

@@ -24,23 +24,22 @@
             $this->output('v_activity_show_list', $data);
         }
 
-        function create($_id){
+        function create(){
             session_start();
             $_SESSION['menu'] = 'activity_create';
             
             if($this->input->post('submit')){
                 $this->form_validation->set_rules('act_name','Name activity', 'trim|required');
                 $this->form_validation->set_rules('act_point','Point', 'trim|required');
-                $data_ams['ams'] = $this->M_achievement->get_achievement($_id);
 
                 if($this->form_validation->run() !== false){
-                        $result = $this->M_activity->create_activity($this->input->post($data_ams->ach_id),$this->input->post('act_name'), $this->input->post('act_point'));
+                    $result = $this->M_activity->create_activity($this->input->post('act_name'), $this->input->post('act_point'));
                         if($result === true){
                             redirect('Activity/show_list');
                         }else{
                             $data['error'] = 'Error occurred during updating data';
                             $this->output('v_activity_create', $data);
-                        }               
+                        }  
                 }else{
                     $data['error'] = 'เกิดปัญหา กรุณาตรวจสอบข้อมูลที่บันทึก';
                     $this->output('v_activity_create', $data);
