@@ -32,8 +32,8 @@
             $_SESSION['menu'] = 'achievement_create';
             
             if($this->input->post('submit')){
-                $this->form_validation->set_rules('act_name','Name achievement', 'trim|required');
-                $this->form_validation->set_rules('act_point','Point', 'trim|required');
+                $this->form_validation->set_rules('ach_name','Name achievement', 'trim|required');
+                $this->form_validation->set_rules('ach_point','Point', 'trim|required');
 
                 if($this->form_validation->run() !== false){
                     $result = $this->M_achievement->create_achievement($this->input->post('ach_name'), $this->input->post('ach_point'));
@@ -91,11 +91,12 @@
             // $id_ach = "623a2bfaa5470000e30078c5";
             $data['ach'] = $this->M_achievement->get_achievement($id_ach);
             
-            $id_act = $data['ach']->act_id;
+            
             // echo '<pre>';
             // print_r($id_act);
             // echo '</pre>';
-            if(isset($id_act)){
+            if(isset($data['ach']->act_id)){
+                $id_act = $data['ach']->act_id;
                 $data['act'] = [];
                 foreach($id_act as $value){
                     $data_act = $this->M_activity->get_activity($value);
