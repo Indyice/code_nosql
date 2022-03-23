@@ -12,16 +12,17 @@ class Da_activity extends CI_Model{
 		$this->conn = $this->mongodb->getConn();
 	}
 
-	function create_activity($act_name, $act_point){
+	function create_activity($ach_id,$act_name, $act_point){
 		try{
-			$ams = array(
-				'act_name' => $ach_name,
-				'act_point' => $ach_point,
+			$act = array(
+				'ach_id' => $ach_id,
+				'act_name' => $act_name,
+				'act_point' => $act_point,
 				'act_status' => 0,
 			);
 
 			$query = new MongoDB\Driver\BulkWrite();
-			$query->insert($ams);
+			$query->insert($act);
 
 			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
 			if($result == 1){

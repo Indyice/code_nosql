@@ -50,6 +50,7 @@
                             <td><?php echo $ams->ach_point; ?></td>
                             <td><?php echo $ams->ach_status; ?></td>
                             <td>
+                                <?php echo anchor('/Activity/create/' . $ams->_id, 'Add Activity'); ?>
                                 <?php echo anchor('/Achievement/update/' . $ams->_id, 'Edit'); ?>
                                 <?php echo anchor('/Achievement/delete/' . $ams->_id, 'Delete', array('onclick' => "return confirm('Do you want delete this record')")); ?>
                             </td>

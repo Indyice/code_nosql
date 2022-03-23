@@ -33,8 +33,8 @@ class M_activity extends Da_activity{
 
 			$result = $this->conn->executeQuery($this->database.'.'.$this->collection, $query);
 
-			foreach($result as $user) {
-				return $user;
+			foreach($result as $array_act) {
+				return $array_act;
 			}
 
 			return NULL;
