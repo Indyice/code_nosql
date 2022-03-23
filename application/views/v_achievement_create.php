@@ -27,7 +27,7 @@
                             </div>
                             <label>Point</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="point" name="ach_point" value="<?php echo isset($ach)?$ach->ach_point:set_value('ach_point'); ?>">
+                                <input type="number" class="form-control" placeholder="point" name="ach_point" value="<?php echo isset($ach)?$ach->ach_point:set_value('ach_point'); ?>">
                             </div>
                             <div class="modal-footer">
                                 <?php echo anchor('/Achievement/show_list', 'Cancel', array('class' => "btn bg-gradient-secondary"));?>
