@@ -33,8 +33,8 @@ class M_achievement extends Da_achievement{
 
 			$result = $this->conn->executeQuery($this->database.'.'.$this->collection, $query);
 
-			foreach($result as $user) {
-				return $user;
+			foreach($result as $ams) {
+				return $ams;
 			}
 
 			return NULL;

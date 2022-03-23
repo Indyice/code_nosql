@@ -50,4 +50,37 @@
                 $this->output('v_achievement_create');
             }
         }
+
+        function update($_id){
+            session_start();
+            $_SESSION['menu'] = 'achievement_update';
+
+            if($this->input->post('submit')){
+                $this->form_validation->set_rules('ach_name','Name achievement', 'trim|required');
+                $this->form_validation->set_rules('ach_point', 'Point', 'trim|required');
+
+                if($this->form_validation->run() !== false){
+                    $result = $this->M_achievement->update_achievement($_id, $this->input->post('ach_name'), $this->input->post('ach_point'));
+                        if($result === true){
+                            redirect('Achievement/show_list');
+                        }else{
+                            $data['error'] = 'Error occurred during updating data';
+                            $this->output('v_achievement_update', $data);
+                        }  
+                }else{
+                    $data['error'] = 'เกิดปัญหา กรุณาตรวจสอบข้อมูลที่บันทึก';
+                    $this->output('v_achievement_update', $data);
+                }
+            }else{
+                $data['ach'] = $this->M_achievement->get_achievement($_id);
+                $this->output('v_achievement_update', $data);
+            }
+        }
+        
+        function delete($_id){
+            if($_id){
+                $this->M_achievement->delete_achievement($_id);
+            }
+            redirect('Achievement/show_list');
+        }
     }
