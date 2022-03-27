@@ -16,8 +16,8 @@
         <div class="card-body">
             <div class="table-responsive">
                 <?php
-          if ($ach) {
-        ?>
+                    if ($ach) {
+                ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -28,22 +28,14 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Point</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <?php
-              $i = 0;
-              foreach ($ach as $ams) {
-                $col_class = ($i % 2 == 0 ? 'odd_col' : 'even_col');
-                $i++;
-              ?>
+                            $i = 0;
+                            foreach ($ach as $ams) {
+                                $col_class = ($i % 2 == 0 ? 'odd_col' : 'even_col');
+                                if($ams->ach_status != 2){
+                                    $i++;
+                        ?>
                         <tr class="<?php echo $col_class; ?>">
                             <td><?php echo $i; ?></td>
                             <td><?php echo $ams->ach_name; ?></td>
@@ -64,15 +56,16 @@
                             </td>
                         </tr>
                         <?php
-            }
-            ?>
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
                 <?php
-            } else {
-                echo '<div style="color:red;"><p>No Record Found!</p></div>';
-            }
-        ?>
+                    } else {
+                        echo '<div style="color:red;"><p>No Record Found!</p></div>';
+                    }
+                ?>
             </div>
         </div>
     </div>

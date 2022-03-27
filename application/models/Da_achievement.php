@@ -54,7 +54,7 @@ class Da_achievement extends CI_Model{
 	function delete_achievement($_id) {
 		try {
 			$query = new MongoDB\Driver\BulkWrite();
-			$query->delete(['_id' => new MongoDB\BSON\ObjectId($_id)]);
+			$query->update(['_id' => new MongoDB\BSON\ObjectId($_id)], ['$set' => array('ach_status' => 2)]);
 
 			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
 
@@ -64,7 +64,7 @@ class Da_achievement extends CI_Model{
 
 			return FALSE;
 		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
-			show_error('Error while deleting users: ' . $ex->getMessage(), 500);
+			show_error('Error while updating users: ' . $ex->getMessage(), 500);
 		}
 	}
 
