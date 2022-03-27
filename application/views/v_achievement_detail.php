@@ -27,14 +27,6 @@
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Point</th>
-                            <th>Status</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <?php
               $i = 0;

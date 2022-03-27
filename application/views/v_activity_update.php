@@ -1,34 +1,44 @@
-<div class="container pt-4">
-    <div class="card">
-        <div class="card-header bg-primary text-white">
-            <h1>Codeigniter MongoDB Create Read Update Delete Example</h1>
-        </div>
-        <div class="card-body">
-            <div>
-                <?php echo anchor('/usercontroller/create', 'Create User');?>
-            </div>
+<div class="container col-md-4">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="card card-plain">
+                    <div class="card-header pb-0 text-left">
+                        <h3 class="font-weight-bolder text-info text-gradient">Edit Activity</h3>
+                    </div>
+                    <div class="card-body">
+                        <?php
+                                if(isset($error)){
+                                    echo '<p style="color:red;">'.$error.'</p>';
 
-            <div id="body">
-                <?php
-					$attributes = array('name' => 'form', 'id' => 'form');
-					echo form_open($this->uri->uri_string(), $attributes);
-                ?>
+                                }else{
+                                    echo validation_errors();
+                                }
+                                ?>
 
-                <h5>Full Name</h5>
-                <input type="text" name="name" value="<?php echo isset($user)?$user->name:set_value('name'); ?>" size="50" />
+                        <?php
+                                $attributes = array('name' => 'form', 'id' => 'form');
+                                echo form_open($this->uri->uri_string(), $attributes);
+                                ?>
 
-                <h5>Email Address</h5>
-                <input type="text" name="email" value="<?php echo isset($user)?$user->email:set_value('email'); ?>" size="50" />
-
-                <p><input type="submit" name="submit" value="Submit" /></p>
-
-                <?php echo form_close(); ?>
-
-
+                        <form role="form text-left">
+                            <label>Name</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="name" name="act_name" value="<?php echo isset($act)?$act->act_name:set_value('act_name'); ?>">
+                            </div>
+                            <label>Point</label>
+                            <div class="input-group mb-3">
+                                <input type="number" class="form-control" placeholder="point" name="act_point" value="<?php echo isset($act)?$act->act_point:set_value('act_point'); ?>">
+                            </div>
+                            <div class="modal-footer">
+                                <?php echo anchor('/Activity/show_list', 'Cancel', array('class' => "btn bg-gradient-secondary"));?>
+                                <button type="submit" name="submit" value="Submit" class="btn bg-gradient-warning">Edit</button>
+                            </div>
+                        </form>
+                        <?php echo form_close(); ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
-
 </div>

@@ -42,7 +42,4 @@ class M_activity extends Da_activity{
 			show_error('Error while fetching user: ' . $ex->getMessage(), 500);
 		}
 	}
-
-
-
 }

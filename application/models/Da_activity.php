@@ -33,4 +33,38 @@ class Da_activity extends CI_Model{
 			show_error('Error while saving users: ' . $ex->getMessage(), 500);
 		}
 	}
+
+	function update_activity($_id, $act_name, $act_point) {
+		try {
+			$query = new MongoDB\Driver\BulkWrite();
+			$query->update(['_id' => new MongoDB\BSON\ObjectId($_id)], ['$set' => array('act_name' => $act_name, 'act_point' => $act_point)]);
+
+			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
+
+			if($result == 1) {
+				return TRUE;
+			}
+
+			return FALSE;
+		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
+			show_error('Error while updating users: ' . $ex->getMessage(), 500);
+		}
+	}
+
+	function delete_activity($_id) {
+		try {
+			$query = new MongoDB\Driver\BulkWrite();
+			$query->update(['_id' => new MongoDB\BSON\ObjectId($_id)], ['$set' => array('act_status' => 2)]);
+
+			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
+
+			if($result == 1) {
+				return TRUE;
+			}
+
+			return FALSE;
+		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
+			show_error('Error while updating users: ' . $ex->getMessage(), 500);
+		}
+	}
 }

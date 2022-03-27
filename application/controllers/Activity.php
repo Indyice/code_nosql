@@ -49,5 +49,38 @@
             }
         }
 
+        function update($_id){
+            session_start();
+            $_SESSION['menu'] = 'activity_update';
+
+            if($this->input->post('submit')){
+                $this->form_validation->set_rules('act_name','Name achievement', 'trim|required');
+                $this->form_validation->set_rules('act_point', 'Point', 'trim|required');
+
+                if($this->form_validation->run() !== false){
+                    $result = $this->M_activity->update_activity($_id, $this->input->post('act_name'), $this->input->post('act_point'));
+                        if($result === true){
+                            redirect('Activity/show_list');
+                        }else{
+                            $data['error'] = 'Error occurred during updating data';
+                            $this->output('v_activity_update', $data);
+                        }  
+                }else{
+                    $data['error'] = 'เกิดปัญหา กรุณาตรวจสอบข้อมูลที่บันทึก';
+                    $this->output('v_activity_update', $data);
+                }
+            }else{
+                $data['act'] = $this->M_activity->get_activity($_id);
+                $this->output('v_activity_update', $data);
+            }
+        }
+        
+        function delete($_id){
+            if($_id){
+                $this->M_activity->delete_activity($_id);
+            }
+            redirect('Activity/show_list');
+        }
+
        
     }
