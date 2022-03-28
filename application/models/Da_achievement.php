@@ -67,5 +67,27 @@ class Da_achievement extends CI_Model{
 			show_error('Error while updating users: ' . $ex->getMessage(), 500);
 		}
 	}
+	/*
+    * update_status_achievement
+    * update status achievement
+    * @input parameter 0, 1, ex. 0 = Pending, 1 = Succeed
+    */
+	public function update_status_achievement($_id,$status_number)
+    {
+        try {
+			$query = new MongoDB\Driver\BulkWrite();
+			$query->update(['_id' => new MongoDB\BSON\ObjectId($_id)], ['$set' => array('ach_status' => $status_number)]);
+
+			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
+
+			if($result == 1) {
+				return TRUE;
+			}
+
+			return FALSE;
+		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
+			show_error('Error while updating users: ' . $ex->getMessage(), 500);
+		}
+    }
 
 }

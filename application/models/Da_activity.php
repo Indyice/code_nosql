@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Da_activity extends CI_Model{
     private $database = 'nosqldemo';
 	private $collection = 'act';
+	private $collection2 = 'ams';
 	private $conn;//ตัวแปรสำหรับ connect database
 
 	function __construct() {
@@ -67,4 +68,26 @@ class Da_activity extends CI_Model{
 			show_error('Error while updating users: ' . $ex->getMessage(), 500);
 		}
 	}
+	/*
+    * update_status
+    * update status Activity
+    * @input parameter 0, 1, ex. 0 = Pending, 1 = Succeed
+    */
+	public function update_status_activity($_id,$status_number)
+    {
+        try {
+			$query = new MongoDB\Driver\BulkWrite();
+			$query->update(['_id' => new MongoDB\BSON\ObjectId($_id)], ['$set' => array('act_status' => $status_number)]);
+
+			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
+
+			if($result == 1) {
+				return TRUE;
+			}
+
+			return FALSE;
+		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
+			show_error('Error while updating users: ' . $ex->getMessage(), 500);
+		}
+    }
 }

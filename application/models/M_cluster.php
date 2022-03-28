@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include_once 'Da_achievement.php';
+include_once 'Da_cluster.php';
 
-class M_achievement extends Da_achievement{
+class M_cluster extends Da_cluster{
     private $database = 'nosqldemo';
-	private $collection = 'ams';
+	private $collection = 'cluster';
 	private $conn;//ตัวแปรสำหรับ connect database
 
 	function __construct() {
@@ -12,29 +12,16 @@ class M_achievement extends Da_achievement{
 		$this->load->library('mongodb');
 		$this->conn = $this->mongodb->getConn();
 	}
-    
-	function get_achievement_list() {
-		try {
-			$filter = [];
-			$query = new MongoDB\Driver\Query($filter);
-
-			$result = $this->conn->executeQuery($this->database.'.'.$this->collection, $query);
-
-			return $result;
-		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
-			show_error('Error while fetching users: ' . $ex->getMessage(), 500);
-		}
-	}
 	
-	function get_achievement($_id) {
+	function get_cluster($_id) {
 		try {
 			$filter = ['_id' => new MongoDB\BSON\ObjectId($_id)];
 			$query = new MongoDB\Driver\Query($filter);
 
 			$result = $this->conn->executeQuery($this->database.'.'.$this->collection, $query);
 
-			foreach($result as $ams) {
-				return $ams;
+			foreach($result as $array_clu) {
+				return $array_clu;
 			}
 
 			return NULL;
@@ -42,5 +29,4 @@ class M_achievement extends Da_achievement{
 			show_error('Error while fetching user: ' . $ex->getMessage(), 500);
 		}
 	}
-
 }

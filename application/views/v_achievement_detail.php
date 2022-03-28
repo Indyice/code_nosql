@@ -11,7 +11,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Achievement detail</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Achievement Detail</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -25,6 +25,7 @@
                             <th>Name</th>
                             <th>Point</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +39,23 @@
                             <td><?php echo $i; ?></td>
                             <td><?php echo $ams->act_name; ?></td>
                             <td><?php echo $ams->act_point; ?></td>
-                            <td><?php echo $ams->act_status; ?></td>
+                            <td><div style="color: #1cc88a;">
+                                    <?php if($ams->act_status == 1){echo 'Done';}?>
+                                </div>
+                                <div style="color: #f6c23e;">
+                                    <?php if($ams->act_status == 0){echo 'Pending';} ?>
+                                </div></td>
+                            <td>
+                            
+                            <?php echo anchor('/Activity/success_activity/' . $ams->_id, 'Done', array('onclick' => "return confirm('Done')")); ?>
+                            <?php echo anchor('/Activity/pending_activity/' . $ams->_id, 'Pending', array('onclick' => "return confirm('Pending')")); ?>
+                                <!-- <a href="#" class="btn btn-success btn-circle btn-sm">
+                                    <i class="fas fa-check"></i>
+                                </a>
+                                <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                </a> -->
+                            </td>
                         </tr>
                         <?php
             }

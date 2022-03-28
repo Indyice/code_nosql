@@ -42,17 +42,18 @@
                             <td><?php echo $ams->ach_point; ?></td>
                             <td>
                                 <div style="color: #1cc88a;">
-                                    <?php if($ams->ach_status == 1){echo 'Succeed';}?>
+                                    <?php if($ams->ach_status == 1){echo 'Done';}?>
                                 </div>
                                 <div style="color: #f6c23e;">
                                     <?php if($ams->ach_status == 0){echo 'Pending';} ?>
                                 </div>
                             </td>
                             <td>
-                                <?php echo anchor('/Activity/create/' . $ams->_id, 'Add Activity'); ?>
                                 <?php echo anchor('/Achievement/update/' . $ams->_id, 'Edit'); ?>
                                 <?php echo anchor('/Achievement/delete/' . $ams->_id, 'Delete', array('onclick' => "return confirm('Do you want delete this record')")); ?>
                                 <?php echo anchor('/Achievement/get_act_by_id/' . $ams->_id, 'Detail'); ?>
+                                <?php echo anchor('/Achievement/success_achievement/' . $ams->_id, 'Done', array('onclick' => "return confirm('Done')")); ?>
+                                <?php echo anchor('/Achievement/pending_achievement/' . $ams->_id, 'Pending', array('onclick' => "return confirm('Pending')")); ?>
                             </td>
                         </tr>
                         <?php

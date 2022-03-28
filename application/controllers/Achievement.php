@@ -5,6 +5,7 @@
         function __construct()
         {
             parent :: __construct();
+            $this->load->model('M_cluster');
             $this->load->model('M_achievement');
             $this->load->model('M_activity');
 
@@ -85,7 +86,7 @@
             redirect('Achievement/show_list');
         }
 
-        function get_act_by_id($id_ach){
+        public function get_act_by_id($id_ach){
             session_start();
             $_SESSION['menu'] = 'achievement_detail';
             // $id_ach = "623a2bfaa5470000e30078c5";
@@ -108,4 +109,52 @@
             }
                     
         }
+
+        function pending_achievement($id_ach){
+            if($id_ach){
+                $this->M_achievement->update_status_achievement($id_ach,0);
+            }
+            redirect('Achievement/show_list');
+            
+        }
+        function success_achievement($id_ach){
+            session_start();
+            $_SESSION['menu'] = 'achievement_show_list';
+            $id_clu = "6241c0bd3a6f6448ed2cd4e6";
+            $data['clu'] = $this->M_cluster->get_cluster($id_clu);
+            $data['ach'] = $this->M_achievement->get_achievement($id_ach);
+            
+            if(isset($data['ach']->act_id)){
+                $check_status = 0;
+                $id_act = $data['ach']->act_id;
+                $data['act'] = [];
+                foreach($id_act as $value){
+                    $data_act = $this->M_activity->get_activity($value);
+                    array_push($data['act'], $data_act);
+                    if($data_act->act_status==1){
+                        $check_status++;
+                    }
+                    // print_r($check_status);
+         
+                }
+                $total = count((array)$data['act']);
+                // print_r($total);
+                
+                if($check_status == $total){
+                    $this->M_achievement->update_status_achievement($id_ach,1);
+                    $total_point = $data['clu'] -> clu_point + $data['ach'] -> ach_point;
+                    $this->M_cluster->update_point_cluster($id_clu,$total_point);
+                }                 
+                redirect('Achievement/show_list');
+            }else{
+                redirect('Achievement/show_list');
+            }
+
+  
+                
+ 
+            
+            
+        }
+
     }
