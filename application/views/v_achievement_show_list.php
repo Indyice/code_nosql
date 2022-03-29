@@ -21,8 +21,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Name</th>
+                            <th style="text-align: center;">No.</th>
+                            <th style="text-align: center;">Name</th>
                             <th style="text-align: center;">Point</th>
                             <th style="text-align: center;">Status</th>
                             <th style="text-align: center;">Manage</th>
@@ -38,7 +38,7 @@
                                     $i++;
                         ?>
                         <tr class="<?php echo $col_class; ?>">
-                            <td><?php echo $i; ?></td>
+                            <td style="text-align: center;"><?php echo $i; ?></td>
                             <td><?php echo $ams->ach_name; ?></td>
                             <td style="text-align: center;"><?php echo $ams->ach_point; ?></td>
                             <td style="text-align: center;">
@@ -56,8 +56,8 @@
                             </td>
                                     
                             <td style="text-align: center;">
-                                <?php echo anchor('/Achievement/success_achievement/' . $ams->_id, '<span class="material-icons">done</span>', array('class' => 'btn btn-success btn-sm', 'style' => 'color: white;', 'title' => 'Done')); ?>
-                                <?php echo anchor('/Achievement/pending_achievement/' . $ams->_id, '<span class="material-icons">close</span>', array('class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Pending')); ?>
+                                <?php echo anchor('/Achievement/success_achievement/' . $ams->_id, '<span class="material-icons">done</span>', array('onclick' => "return confirm('Do you want status done this achievement')", 'class' => 'btn btn-success btn-sm', 'style' => 'color: white;', 'title' => 'Done Achievement')); ?>
+                                <?php echo anchor('/Achievement/pending_achievement/' . $ams->_id, '<span class="material-icons">close</span>', array('onclick' => "return confirm('Do you want status pending this achievement')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Pending Achievement')); ?>  
                             </td>
             
                         </tr>

@@ -1,14 +1,13 @@
-<div class="container col-md-4">
-    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-body p-0">
-                <div class="card card-plain">
-                    <div class="card-header pb-0 text-left">
-                        <h3 class="font-weight-bolder text-info text-gradient">Create Activity</h3>
-                    </div>
-                    <div class="card-body">
-
-                        <?php
+<!-- Create Activity -->
+<div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="pricing card-group flex-column flex-md-row mb-3">
+            <div class="card card-pricing border-0 text-center mb-4">
+              <div class="card-header bg-transparent">
+                <h4 class="text-uppercase ls-1 text-primary display-4 mb-3">Create Activity</h4>
+              </div>
+              <div class="card-body px-lg-7">
+              <?php
                         if (isset($error)){
                         echo '<p style="color:red;">'.$error.'</p>';
                         }else{
@@ -20,24 +19,34 @@
                         echo form_open($this->uri->uri_string(), $attributes);
                         ?>
 
-                        <form role="form text-left">
-                            <label>Name</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="name" name="act_name" value="<?php echo isset($act)?$act->act_name:set_value('act_name'); ?>">
+                        <form>
+                            <div class="text-primary" style="text-align: left;">
+                                <h5><label > Activity Name</label></h5>
                             </div>
-                            <label>Point</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="point" name="act_point" value="<?php echo isset($act)?$act->act_point:set_value('act_point'); ?>">
+                            <div class="input-group mb-5">
+                                <input type="text" class="form-control" placeholder="Activity Name" name="act_name" value="<?php echo isset($act)?$act->act_name:set_value('act_name'); ?>">
                             </div>
-                            <div class="modal-footer">
-                                <?php echo anchor('/Achievement/show_list', 'Cancel', array('class' => "btn bg-gradient-secondary"));?>
-                                <button type="submit" name="submit" value="Submit" class="btn bg-gradient-success">Save</button>
+                            <div class="text-primary" style="text-align: left;">
+                                <h5><label> Activity Point</label></h5>
+                            </div>
+                            <div class="input-group mb-5">
+                                <input type="number" class="form-control" placeholder="Activity Point" name="act_point" value="<?php echo isset($act)?$act->ach_point:set_value('act_point'); ?>">
+                            </div>
+                            <div class="card-footer" style="text-align: right;">
+                                
+                                <button type="submit" name="submit" value="Submit" class="btn btn-success btn-lg">Save</button>
+        
+                                <?php echo anchor('/Activity/show_list', 'Cancel', array('class' => "btn btn-secondary btn-lg"));?>
                             </div>
                         </form>
                         <?php echo form_close(); ?>
-                    </div>
-                </div>
+
+                    
+                    
+              </div>
+              
             </div>
+            
+          </div>
         </div>
-    </div>
-</div>
+      </div>

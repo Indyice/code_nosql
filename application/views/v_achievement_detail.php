@@ -1,6 +1,9 @@
 <!-- Begin Page Content -->
 <div class="container-fluid pt-4">
-
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Achievement Detail</h1>
+    </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -14,11 +17,11 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Point</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th style="text-align: center;">No.</th>
+                            <th style="text-align: center;">Name</th>
+                            <th style="text-align: center;">Point</th>
+                            <th style="text-align: center;">Status</th>
+                            <th style="text-align: center;"> Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,25 +32,18 @@
                 $i++;
               ?>
                         <tr class="<?php echo $col_class; ?>">
-                            <td><?php echo $i; ?></td>
+                            <td style="text-align: center;"><?php echo $i; ?></td>
                             <td><?php echo $ams->act_name; ?></td>
-                            <td><?php echo $ams->act_point; ?></td>
-                            <td><div style="color: #1cc88a;">
+                            <td style="text-align: center;"><?php echo $ams->act_point; ?></td>
+                            <td style="text-align: center;"><div style="color: #1cc88a;">
                                     <?php if($ams->act_status == 1){echo 'Done';}?>
                                 </div>
                                 <div style="color: #f6c23e;">
                                     <?php if($ams->act_status == 0){echo 'Pending';} ?>
                                 </div></td>
-                            <td>
-                            
-                            <?php echo anchor('/Activity/success_activity/' . $ams->_id, 'Done', array('onclick' => "return confirm('Done')")); ?>
-                            <?php echo anchor('/Activity/pending_activity/' . $ams->_id, 'Pending', array('onclick' => "return confirm('Pending')")); ?>
-                                <!-- <a href="#" class="btn btn-success btn-circle btn-sm">
-                                    <i class="fas fa-check"></i>
-                                </a>
-                                <a href="#" class="btn btn-warning btn-circle btn-sm">
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                </a> -->
+                            <td class="table-actions" style="text-align: center;">
+                                 <?php echo anchor('/Activity/success_activity/' . $ams->_id, '<span class="material-icons">done</span>', array('onclick' => "return confirm('Do you want status done this activity')", 'class' => 'btn btn-success btn-sm', 'style' => 'color: white;', 'title' => 'Done Activity')); ?>
+                                <?php echo anchor('/Activity/pending_activity/' . $ams->_id, '<span class="material-icons">close</span>', array('onclick' => "return confirm('Do you want status pending this activity')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Pending Activity')); ?>  
                             </td>
                         </tr>
                         <?php

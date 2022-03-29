@@ -21,11 +21,11 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Point</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th style="text-align: center;">No.</th>
+                            <th style="text-align: center;">Name</th>
+                            <th style="text-align: center;">Point</th>
+                            <th style="text-align: center;">Status</th>
+                            <th style="text-align: center;">Manage</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,20 +37,20 @@
                                     $i++;
                             ?>
                         <tr class="<?php echo $col_class; ?>">
-                            <td><?php echo $i; ?></td>
+                            <td style="text-align: center;"><?php echo $i; ?></td>
                             <td><?php echo $act->act_name; ?></td>
-                            <td><?php echo $act->act_point; ?></td>
-                            <td>
+                            <td style="text-align: center;"><?php echo $act->act_point; ?></td>
+                            <td style="text-align: center;">
                                 <div style="color: #1cc88a;">
-                                    <?php if($act->act_status == 1){echo 'Succeed';}?>
+                                    <?php if($act->act_status == 1){echo 'Done';}?>
                                 </div>
                                 <div style="color: #f6c23e;">
                                     <?php if($act->act_status == 0){echo 'Pending';} ?>
                                 </div>
                             </td>
-                            <td>
-                                <?php echo anchor('/Activity/update/' . $act->_id, 'Edit'); ?>
-                                <?php echo anchor('/Activity/delete/' . $act->_id, 'Delete', array('onclick' => "return confirm('Do you want delete this record')")); ?>
+                            <td class="table-actions" style="text-align: center;">
+                                 <?php echo anchor('/Activity/update/' . $act->_id, '<span class="material-icons">edit</span>', array('class' => 'btn btn-warning btn-sm', 'style' => 'color: white;', 'title' => 'Edit Achievement ')); ?>
+                                <?php echo anchor('/Activity/delete/' . $act->_id, '<span class="material-icons">delete_forever</span>', array('onclick' => "return confirm('Do you want delete this achievement')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Delete Achievement')); ?>
                             </td>
                         </tr>
                         <?php
