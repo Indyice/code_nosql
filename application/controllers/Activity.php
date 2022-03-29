@@ -4,6 +4,7 @@
     class Activity extends CI_Controller{
         function __construct()
         {
+            
             parent :: __construct();
             $this->load->model('M_cluster');
             $this->load->model('M_achievement');
@@ -12,6 +13,9 @@
         }
 
         function output($view, $data = null){
+            $data['clu'] = $this->M_cluster->get_cluster("6241c0bd3a6f6448ed2cd4e6");
+            
+            $_SESSION['clu_point'] = $data['clu']->clu_point;
             $this->load->view('template/header');
             $this->load->view($view, $data);
             $this->load->view('template/js');
@@ -72,6 +76,7 @@
                     $this->output('v_activity_update', $data);
                 }
             }else{
+
                 $data['act'] = $this->M_activity->get_activity($_id);
                 $this->output('v_activity_update', $data);
             }
@@ -84,6 +89,7 @@
             }
             redirect('Activity/show_list');
         }
+
         function pending_activity($id_act){
             session_start();
             $_SESSION['menu'] = 'achievement_detail';
@@ -124,8 +130,10 @@
                     $data_act = $this->M_activity->get_activity($value);
                     array_push($data['act'], $data_act);
                 }   
+                // redirect('Activity/output/v_achievement_detail/'. $data);
                 $this->output('v_achievement_detail', $data);
             }else{
+                // redirect('Activity/output/');
                 $this->output('v_achievement_detail');
             }
             

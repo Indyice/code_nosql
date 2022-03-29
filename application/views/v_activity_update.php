@@ -33,9 +33,30 @@
                                 <input type="number" class="form-control" placeholder="Activity Point" name="act_point" value="<?php echo isset($act)?$act->act_point:set_value('act_point'); ?>">
                             </div>
                             <div class="card-footer" style="text-align: right;">
-                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#exampleModal" style="height: 50px; width: 10%; text-align: center;">Edit</button>
+                                <button type="button" class="btn btn-success btn-lg" onclick="show_modal()" style="height: 50px; width: 10%; text-align: center;">Edit</button>
                                 <?php echo anchor('/Activity/show_list', 'Cancel', array('class' => "btn btn-secondary btn-lg",'style' => "height: 50px; width: 10%;", 'type' => "button"));?>      
                             </div>
+
+
+                          <!-- Modal Confirm Edit-->
+                          <div class="modal fade" id="edit_activity" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                </div>
+                                <div class="modal-footer">
+                                      <button type="submit" name="submit" id="submit" value="Submit" class="btn btn-success">Save</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </form>
                         <?php echo form_close(); ?>                 
                    
@@ -47,23 +68,13 @@
         </div>
 </div>
 
-<!-- Modal Confirm Edit-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-            <button type="submit" name="submit" value="Submit" class="btn btn-success">Save</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+<script>
+  /*
+   * Suwapat Saowarod 62160340
+   */
+  function show_modal(){
+    $('#edit_activity').modal();
+  }
+</script>

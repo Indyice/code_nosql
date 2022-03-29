@@ -81,7 +81,7 @@ class Da_activity extends CI_Model{
 
 			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
 
-			if($result == 1) {
+			if($result) {
 				return TRUE;
 			}
 

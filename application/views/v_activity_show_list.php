@@ -50,9 +50,11 @@
                             </td>
                             <td class="table-actions" style="text-align: center;">
 
-                             
-                                 <?php echo anchor('/Activity/update/' . $act->_id, '<span class="material-icons">edit</span>', array(
+                            <?php if($act->act_status == 0){?>
+                                <?php echo anchor('/Activity/update/' . $act->_id, '<span class="material-icons">edit</span>', array(
                                      'class' => 'btn btn-warning btn-sm', 'style' => 'color: white;', 'title' => 'Edit Achievement ','title' => 'Edit Achievement ')); ?>
+                            <?php }?>
+                                 
                                  <?php echo anchor('/Activity/delete/' . $act->_id, '<span class="material-icons">delete_forever</span>', array('onclick' => "return confirm('Do you want delete this achievement')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;')); ?>
                             </td>
                         </tr>
