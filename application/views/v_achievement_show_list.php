@@ -23,10 +23,10 @@
                         <tr>
                             <th>No.</th>
                             <th>Name</th>
-                            <th>Point</th>
-                            <th>Status</th>
-                            <th>Manage</th>
-                            <th>Action</th>
+                            <th style="text-align: center;">Point</th>
+                            <th style="text-align: center;">Status</th>
+                            <th style="text-align: center;">Manage</th>
+                            <th style="text-align: center;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,8 +40,8 @@
                         <tr class="<?php echo $col_class; ?>">
                             <td><?php echo $i; ?></td>
                             <td><?php echo $ams->ach_name; ?></td>
-                            <td><?php echo $ams->ach_point; ?></td>
-                            <td>
+                            <td style="text-align: center;"><?php echo $ams->ach_point; ?></td>
+                            <td style="text-align: center;">
                                 <div style="color: #1cc88a;">
                                     <?php if($ams->ach_status == 1){echo 'Done';}?>
                                 </div>
@@ -49,26 +49,30 @@
                                     <?php if($ams->ach_status == 0){echo 'Pending';} ?>
                                 </div>
                             </td>
-                            <td class="table-actions">
-                                <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Edit Achievement">
+                            <td class="table-actions" style="text-align: center;">
+                                <a href="#!" class="table-action" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                                     <i class="fas fa-user-edit"></i>
                                 </a>
                                 <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
                                     <i class="fas fa-trash"></i>
                                 </a>
-                                
+                                <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Delete product">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
                                 
                                     
                                 
                             </td>
                                     
-                            <td>
-                                <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
-                                    <i class="fas fa-check"></i>
+                            <td style="text-align: center;">
+                                <a href="#" class="btn btn-success btn-circle btn-sm">
+                                        <i class="fas fa-check"></i>
                                 </a>
-                                <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
-                                    <i class="fas fa-square-xmark"></i>
+                                <a href="#!" class="tn btn-danger btn-circle btn-sm" data-toggle="tooltip" data-original-title="Delete product">
+                                    <i class="fas fa-times"></i>
                                 </a>
+                                
+                                
                             </td>
                 
                             <!-- <td>
