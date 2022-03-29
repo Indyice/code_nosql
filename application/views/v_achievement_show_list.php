@@ -50,41 +50,16 @@
                                 </div>
                             </td>
                             <td class="table-actions" style="text-align: center;">
-                                <a href="#!" class="table-action" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                                    <i class="fas fa-user-edit"></i>
-                                </a>
-                                <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Delete product">
-                                    <i class="fas fa-info-circle"></i>
-                                </a>
-                                
-                                    
-                                
+                                <?php echo anchor('/Achievement/get_act_by_id/' . $ams->_id, '<span class="material-icons">search</span>', array('class' => 'btn btn-primary btn-sm', 'style' => 'color: white;', 'title' => 'Detail')); ?>
+                                <?php echo anchor('/Achievement/update/' . $ams->_id, '<span class="material-icons">edit</span>', array('class' => 'btn btn-warning btn-sm', 'style' => 'color: white;', 'title' => 'Edit Achievement ')); ?>
+                                <?php echo anchor('/Achievement/delete/' . $ams->_id, '<span class="material-icons">delete_forever</span>', array('onclick' => "return confirm('Do you want delete this achievement')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Delete Achievement')); ?>
                             </td>
                                     
                             <td style="text-align: center;">
-                                <a href="#" class="btn btn-success btn-circle btn-sm">
-                                        <i class="fas fa-check"></i>
-                                </a>
-                                <a href="#!" class="tn btn-danger btn-circle btn-sm" data-toggle="tooltip" data-original-title="Delete product">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                                
-                                
+                                <?php echo anchor('/Achievement/success_achievement/' . $ams->_id, '<span class="material-icons">done</span>', array('class' => 'btn btn-success btn-sm', 'style' => 'color: white;', 'title' => 'Done')); ?>
+                                <?php echo anchor('/Achievement/pending_achievement/' . $ams->_id, '<span class="material-icons">close</span>', array('class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Pending')); ?>
                             </td>
-                
-                            <!-- <td>
-                                <?php echo anchor('/Achievement/update/' . $ams->_id, 'Edit'); ?>
-                                <?php echo anchor('/Achievement/delete/' . $ams->_id, 'Delete', array('onclick' => "return confirm('Do you want delete this record')")); ?>
-                                <?php echo anchor('/Achievement/get_act_by_id/' . $ams->_id, 'Detail'); ?>
-                                <?php echo anchor('/Achievement/success_achievement/' . $ams->_id, 'Done', array('onclick' => "return confirm('Done')")); ?>
-                                <a href="<?php echo anchor('/Achievement/success_achievement/' . $ams->_id, 'Done', array('onclick' => "return confirm('Done')")); ?>" class="btn btn-success btn-circle btn-sm">
-                                        <i class="fas fa-check"></i>
-                                </a>
-                                <?php echo anchor('/Achievement/pending_achievement/' . $ams->_id, 'Pending', array('onclick' => "return confirm('Pending')")); ?>
-                            </td> -->
+            
                         </tr>
                         <?php
                                 }
@@ -103,8 +78,3 @@
 
 </div>
 <!-- /.container-fluid -->
-<script>
-    $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-    })
-</script>
