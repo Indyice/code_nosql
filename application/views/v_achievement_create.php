@@ -20,15 +20,15 @@
 
                         <form>
                             <div class="text-primary" style="text-align: left;">
-                                <label > Achievement Name</label>
+                                <h5><label > Achievement Name</label></h5>
                             </div>
-                            <div class="input-group mb-4">
+                            <div class="input-group mb-5">
                                 <input type="text" class="form-control" placeholder=" Achievement Name" name="ach_name" value="<?php echo isset($ach)?$ach->ach_name:set_value('ach_name'); ?>">
                             </div>
                             <div class="text-primary" style="text-align: left;">
-                                <label> Achievement Point</label>
+                                <h5><label> Achievement Point</label></h5>
                             </div>
-                            <div class="input-group mb-4">
+                            <div class="input-group mb-5">
                                 <input type="number" class="form-control" placeholder=" Achievement Point" name="ach_point" value="<?php echo isset($ach)?$ach->ach_point:set_value('ach_point'); ?>">
                             </div>
                             <div class="card-footer" style="text-align: right;">

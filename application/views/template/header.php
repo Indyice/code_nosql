@@ -127,7 +127,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Team 5</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Cluster 0</span>
                                 <img class="img-profile rounded-circle" src="<?php echo base_url().'assets/template/startbootstrap-sb-admin-2-gh-pages'?>/img/undraw_profile.svg">
                             </a>
                         </li>
