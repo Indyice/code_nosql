@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Modal Add by Ice -->
-    
+
 </head>
 <script>
 
@@ -43,16 +43,6 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?php if ($_SESSION['menu'] == 'dashboard') echo 'active' ?>">
-                <a class=" nav-link" href="http://[::1]/code_nosql/">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -112,30 +102,30 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Nav Item - number -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $clu->clu_point; ?>  Point </span> -->
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['clu_point']?>  Point </span>
-                            </a>
-                        </li>
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Nav Item - number -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $clu->clu_point; ?>  Point </span> -->
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['clu_point']?> Point </span>
+                        </a>
+                    </li>
 
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Cluster 0</span>
-                                <img class="img-profile rounded-circle" src="<?php echo base_url().'assets/template/startbootstrap-sb-admin-2-gh-pages'?>/img/undraw_profile.svg">
-                            </a>
-                        </li>
+                    <div class="topbar-divider d-none d-sm-block"></div>
 
-                    </ul>
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Cluster 0</span>
+                            <img class="img-profile rounded-circle" src="<?php echo base_url().'assets/template/startbootstrap-sb-admin-2-gh-pages'?>/img/undraw_profile.svg">
+                        </a>
+                    </li>
 
-                </nav>
-                <!-- End of Topbar -->
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
