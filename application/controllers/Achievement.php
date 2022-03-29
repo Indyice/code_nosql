@@ -90,13 +90,7 @@
         public function get_act_by_id($id_ach){
             session_start();
             $_SESSION['menu'] = 'achievement_detail';
-            // $id_ach = "623a2bfaa5470000e30078c5";
             $data['ach'] = $this->M_achievement->get_achievement($id_ach);
-            
-            
-            // echo '<pre>';
-            // print_r($id_act);
-            // echo '</pre>';
             if(isset($data['ach']->act_id)){
                 $id_act = $data['ach']->act_id;
                 $data['act'] = [];
