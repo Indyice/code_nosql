@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this page -->
     <link href="<?php echo base_url().'assets/template/startbootstrap-sb-admin-2-gh-pages'?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+    
 </head>
 <script>
 

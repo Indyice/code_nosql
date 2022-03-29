@@ -11,7 +11,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Achievement list</h6>
+            <h5 class="m-0 font-weight-bold text-primary">Achievement List</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -25,6 +25,7 @@
                             <th>Name</th>
                             <th>Point</th>
                             <th>Status</th>
+                            <th>Manage</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -48,13 +49,38 @@
                                     <?php if($ams->ach_status == 0){echo 'Pending';} ?>
                                 </div>
                             </td>
+                            <td class="table-actions">
+                                <a href="#!" class="table-action" data-toggle="tooltip" data-original-title="Edit Achievement">
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+                                <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                
+                                
+                                    
+                                
+                            </td>
+                                    
                             <td>
+                                <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
+                                    <i class="fas fa-check"></i>
+                                </a>
+                                <a href="#!" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete product">
+                                    <i class="fas fa-square-xmark"></i>
+                                </a>
+                            </td>
+                
+                            <!-- <td>
                                 <?php echo anchor('/Achievement/update/' . $ams->_id, 'Edit'); ?>
                                 <?php echo anchor('/Achievement/delete/' . $ams->_id, 'Delete', array('onclick' => "return confirm('Do you want delete this record')")); ?>
                                 <?php echo anchor('/Achievement/get_act_by_id/' . $ams->_id, 'Detail'); ?>
                                 <?php echo anchor('/Achievement/success_achievement/' . $ams->_id, 'Done', array('onclick' => "return confirm('Done')")); ?>
+                                <a href="<?php echo anchor('/Achievement/success_achievement/' . $ams->_id, 'Done', array('onclick' => "return confirm('Done')")); ?>" class="btn btn-success btn-circle btn-sm">
+                                        <i class="fas fa-check"></i>
+                                </a>
                                 <?php echo anchor('/Achievement/pending_achievement/' . $ams->_id, 'Pending', array('onclick' => "return confirm('Pending')")); ?>
-                            </td>
+                            </td> -->
                         </tr>
                         <?php
                                 }
@@ -73,3 +99,8 @@
 
 </div>
 <!-- /.container-fluid -->
+<script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
