@@ -12,12 +12,13 @@ class Da_achievement extends CI_Model{
 		$this->conn = $this->mongodb->getConn();
 	}
 
-	function create_achievement($ach_name, $ach_point){
+	function create_achievement($ach_name, $ach_point, $act_id){
 		try{
 			$ams = array(
 				'ach_name' => $ach_name,
 				'ach_point' => $ach_point,
 				'ach_status' => 0,
+				'act_id' => $act_id,
 			);
 
 			$query = new MongoDB\Driver\BulkWrite();

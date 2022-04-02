@@ -90,4 +90,39 @@ class Da_activity extends CI_Model{
 			show_error('Error while updating users: ' . $ex->getMessage(), 500);
 		}
     }
+
+	public function update_status_use_activity($_id){
+        try {
+			$query = new MongoDB\Driver\BulkWrite();
+			$query->update(['_id' => new MongoDB\BSON\ObjectId($_id)], ['$set' => array('act_sta_use' => 1)]);
+
+			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
+
+			if($result) {
+				return TRUE;
+			}
+
+			return FALSE;
+		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
+			show_error('Error while updating users: ' . $ex->getMessage(), 500);
+		}
+    }
+
+	public function update_re_status_use_activity($_id){
+        try {
+			$query = new MongoDB\Driver\BulkWrite();
+			$query->update(['_id' => new MongoDB\BSON\ObjectId($_id)], ['$set' => array('act_sta_use' => 0)]);
+
+			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
+
+			if($result) {
+				return TRUE;
+			}
+
+			return FALSE;
+		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
+			show_error('Error while updating users: ' . $ex->getMessage(), 500);
+		}
+    }
+	
 }
