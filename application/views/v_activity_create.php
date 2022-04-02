@@ -34,11 +34,32 @@
                             </div>
                             <div class="card-footer" style="text-align: right;">
                                 
-                                <button type="submit" name="submit" value="Submit" class="btn btn-success btn-lg">Save</button>
+                            <button type="button" class="btn btn-success btn-lg" onclick="show_modal()" style="height: 50px; width: 10%; text-align: center;">Create</button>
         
                                 <?php echo anchor('/Activity/show_list', 'Cancel', array('class' => "btn btn-secondary btn-lg"));?>
                             </div>
+                          <!-- Modal Confirm Create-->
+                          <div class="modal fade" id="create_activity" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Confirm Create</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <h6>Confirm create to this activity.</h6>
+                                </div>
+                                <div class="modal-footer">
+                                      <button type="submit" name="submit" id="submit" value="Submit" class="btn btn-success">Save</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </form>
+
                         <?php echo form_close(); ?>
 
                     
@@ -50,5 +71,12 @@
           </div>
         </div>
       </div>
-
+      <script>
+  /*
+   * Priyarat Bumrungkit 62160156
+   */
+  function show_modal(){
+    $('#create_activity').modal();
+  }
+</script>
       
