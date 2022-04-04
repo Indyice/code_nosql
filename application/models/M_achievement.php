@@ -42,5 +42,6 @@ class M_achievement extends Da_achievement{
 			show_error('Error while fetching user: ' . $ex->getMessage(), 500);
 		}
 	}
+	
 
 }

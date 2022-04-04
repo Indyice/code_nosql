@@ -26,7 +26,7 @@ class M_activity extends Da_activity{
 		}
 	}
 	
-	function get_activity($_id) {
+	function get_activity($_id){
 		try {
 			$filter = ['_id' => new MongoDB\BSON\ObjectId($_id)];
 			$query = new MongoDB\Driver\Query($filter);
@@ -36,10 +36,10 @@ class M_activity extends Da_activity{
 			foreach($result as $array_act) {
 				return $array_act;
 			}
-
 			return NULL;
 		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
 			show_error('Error while fetching user: ' . $ex->getMessage(), 500);
 		}
 	}
+	
 }

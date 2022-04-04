@@ -1,5 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
+
+    ini_set('memory_limit', '1024M');
     
     class Activity extends CI_Controller{
         function __construct()
@@ -25,7 +27,7 @@
         function show_list(){ 
             session_start();
             $_SESSION['menu'] = 'activity_show_list';
-            
+
             $data['act'] = $this->M_activity->get_activity_list();
             $this->output('v_activity_show_list', $data);
         }
@@ -95,20 +97,21 @@
             $_SESSION['menu'] = 'achievement_detail';
             $this->M_activity->update_status_activity($id_act,0);
             $data['act'] = $this->M_activity->get_activity($id_act);
-            $data['ach'] = $this->M_achievement->get_achievement($data['act']->ach_id);
+            // $data['ach'] = $this->M_achievement->get_achievement($data['act']->ach_id);
     
             // echo '</pre>';
-            if(isset($data['ach']->act_id)){
-                $id_act = $data['ach']->act_id;
-                $data['act'] = [];
-                foreach($id_act as $value){
-                    $data_act = $this->M_activity->get_activity($value);
-                    array_push($data['act'], $data_act);
-                }   
-                $this->output('v_achievement_detail', $data);
-            }else{
-                $this->output('v_achievement_detail');
-            }
+            // if(isset($data['ach']->act_id)){
+            //     $id_act = $data['ach']->act_id;
+            //     $data['act'] = [];
+            //     foreach($id_act as $value){
+            //         $data_act = $this->M_activity->get_activity($value);
+            //         array_push($data['act'], $data_act);
+            //     }   
+            //     $this->output('v_achievement_detail', $data);
+            // }else{
+            //     $this->output('v_achievement_detail');
+            // }
+            redirect('Achievement/get_act_by_id/'. $data['act']->ach_id);
             
         }
         function success_activity($id_act){
@@ -119,23 +122,97 @@
             $data['clu'] = $this->M_cluster->get_cluster($id_clu);
             $data['act'] = $this->M_activity->get_activity($id_act);
             $data['ach'] = $this->M_achievement->get_achievement($data['act']->ach_id);
+            $id_ach = $data['act']->ach_id;
+            // $data['ach'] = $this->M_achievement->get_achievement($data['act']->ach_id);
             $total_point = $data['clu'] -> clu_point + $data['act'] -> act_point;
             $this->M_cluster->update_point_cluster($id_clu,$total_point);
 
-            // echo '</pre>';
             if(isset($data['ach']->act_id)){
+                $check_status = 0;
                 $id_act = $data['ach']->act_id;
                 $data['act'] = [];
                 foreach($id_act as $value){
                     $data_act = $this->M_activity->get_activity($value);
                     array_push($data['act'], $data_act);
-                }   
-                // redirect('Activity/output/v_achievement_detail/'. $data);
-                $this->output('v_achievement_detail', $data);
-            }else{
-                // redirect('Activity/output/');
-                $this->output('v_achievement_detail');
-            }
+                    if($data_act->act_status==1){
+                        $check_status++;
+                    }
+                    // print_r($check_status);
+         
+                }
+                $total = count((array)$data['act']);
+                // print_r($total);
+                
+                if($check_status == $total){
+                    $this->M_achievement->update_status_achievement($id_ach,1);
+                    $total_point = $data['clu'] -> clu_point + $data['ach']->ach_point;
+                    $this->M_cluster->update_point_cluster($id_clu,$total_point);
+                }                 
+            }           
+            redirect('Achievement/get_act_by_id/'. $id_ach);
+            // echo '</pre>';
+            // if(isset($data['ach']->act_id)){
+            //     $id_act = $data['ach']->act_id;
+            //     $data['act'] = [];
+            //     foreach($id_act as $value){
+            //         $data_act = $this->M_activity->get_activity($value);
+            //         array_push($data['act'], $data_act);
+            //     }   
+            //     // redirect('Achievement/get_act_by_id/'. $data['act']->ach_id);
+            //     // $this->output('v_achievement_detail', $data);
+            // }
+            // echo $data['act']->ach_id;
+            
+            
             
         }    
+
+        function use_activity($_id,$id_ach){
+            session_start();
+            $_SESSION['menu'] = 'choose_activity';
+            $data['ach'] = $this->M_achievement->get_achievement($id_ach);
+            if(isset($data['ach']->act_id)){
+                $id_act = $_id;
+                $array_act_id = $data['ach']->act_id;
+                array_push($array_act_id, $id_act);
+                // print_r($array_act_id);
+            }  
+            if($_id){   
+                $this->M_activity->update_status_use_activity($_id);
+                $this->M_activity->add_id_achievement($_id,$id_ach);
+
+                $this->M_achievement->add_id_activity($id_ach,$array_act_id);
+                // print_r($array_act_id);
+                redirect('/Activity/show_list_activity_re_use/'.$id_ach);
+            }else{
+                redirect('/Activity/show_list_activity_re_use/'.$id_ach);
+            }
+            redirect('v_achievement_create');
+        }
+
+        function re_use_activity($_id,$id_ach){
+            session_start();
+            $_SESSION['menu'] = 'choose_activity';
+            
+            if($_id){
+                $this->M_activity->update_re_status_use_activity($_id);
+                $this->M_activity->add_id_achievement($_id,'');
+                redirect('/Activity/show_list_activity_re_use/'.$id_ach);
+                
+            }else{
+                redirect('/Activity/show_list_activity_re_use/'.$id_ach);
+            }
+        }
+
+        public function show_list_activity_re_use($_id){
+            session_start();
+            $_SESSION['menu'] = 'v_choose_act_to_achievement';
+            $data['ach'] = $this->M_achievement->get_achievement($_id);
+            if(isset($_id)){
+                $data['act'] = $this->M_activity->get_activity_list();
+                $this->output('v_choose_act_to_achievement', $data);
+            }else{
+                $this->output('v_choose_act_to_achievement');
+            }            
+        }
     }

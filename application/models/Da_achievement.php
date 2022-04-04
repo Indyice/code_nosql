@@ -12,20 +12,20 @@ class Da_achievement extends CI_Model{
 		$this->conn = $this->mongodb->getConn();
 	}
 
-	function create_achievement($ach_name, $ach_point, $act_id){
+	function create_achievement($ach_name, $ach_point){
 		try{
 			$ams = array(
 				'ach_name' => $ach_name,
 				'ach_point' => $ach_point,
 				'ach_status' => 0,
-				'act_id' => $act_id,
+				'act_id' => [],
 			);
 
 			$query = new MongoDB\Driver\BulkWrite();
 			$query->insert($ams);
 
 			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
-			if($result == 1){
+			if($result){
 				return true;
 			}
 			return false;
@@ -82,6 +82,31 @@ class Da_achievement extends CI_Model{
 			$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
 
 			if($result == 1) {
+				return TRUE;
+			}
+
+			return FALSE;
+		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
+			show_error('Error while updating users: ' . $ex->getMessage(), 500);
+		}
+    }
+	/*
+    * add_act_id
+    * add id activity
+    * @input parameter 
+    */
+	public function add_id_activity($_id,$act_id)
+    {
+        try {
+			
+				$query = new MongoDB\Driver\BulkWrite();
+				$query->update(['_id' => new MongoDB\BSON\ObjectId($_id)], ['$set' => array('act_id' => $act_id)]);
+				$result = $this->conn->executeBulkWrite($this->database.'.'.$this->collection, $query);
+			
+			
+
+			
+			if($result) {
 				return TRUE;
 			}
 

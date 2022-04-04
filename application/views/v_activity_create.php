@@ -71,7 +71,7 @@
           </div>
         </div>
       </div>
-      <script>
+<script>
   /*
    * Priyarat Bumrungkit 62160156
    */

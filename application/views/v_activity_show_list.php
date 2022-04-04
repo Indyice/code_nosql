@@ -58,6 +58,7 @@
                                  <?php echo anchor('/Activity/delete/' . $act->_id, '<span class="material-icons">delete_forever</span>', array('onclick' => "return confirm('Do you want delete this achievement')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;')); ?>
                             </td>
                         </tr>
+                        
                         <?php
                                 }
                             }

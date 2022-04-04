@@ -26,7 +26,7 @@
                             <th style="text-align: center;">Point</th>
                             <th style="text-align: center;">Status</th>
                             <th style="text-align: center;">Manage</th>
-                            <th style="text-align: center;">Action</th>
+                            <!-- <th style="text-align: center;">Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -51,16 +51,41 @@
                             </td>
                             <td class="table-actions" style="text-align: center;">
                                 <?php echo anchor('/Achievement/get_act_by_id/' . $ams->_id, '<span class="material-icons">search</span>', array('class' => 'btn btn-primary btn-sm', 'style' => 'color: white;', 'title' => 'Detail')); ?>
-                                <?php echo anchor('/Achievement/update/' . $ams->_id, '<span class="material-icons">edit</span>', array('class' => 'btn btn-warning btn-sm', 'style' => 'color: white;', 'title' => 'Edit Achievement ')); ?>
-                                <?php echo anchor('/Achievement/delete/' . $ams->_id, '<span class="material-icons">delete_forever</span>', array('onclick' => "return confirm('Do you want delete this achievement')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Delete Achievement')); ?>
+                                <?php if($ams->ach_status == 0){?>
+                                    <?php echo anchor('/Achievement/update/' . $ams->_id, '<span class="material-icons">edit</span>', array('class' => 'btn btn-warning btn-sm', 'style' => 'color: white;', 'title' => 'Edit Achievement ')); ?>
+                                <?php } ?>
+                                    <?php echo anchor('/Achievement/delete/' . $ams->_id, '<span class="material-icons">delete_forever</span>', array('onclick' => "return confirm('Do you want delete this achievement')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Delete Achievement')); ?>
+                                <!-- <button type="button" class="btn btn-danger btn-sm" onclick="show_modal()" style="color: white" value="" title="Delete Achievement">
+                                    <span class="material-icons">delete_forever</span>
+                                </button> -->
                             </td>
                                     
-                            <td style="text-align: center;">
+                            <!-- <td style="text-align: center;">
                                 <?php echo anchor('/Achievement/success_achievement/' . $ams->_id, '<span class="material-icons">done</span>', array('onclick' => "return confirm('Do you want status done this achievement')", 'class' => 'btn btn-success btn-sm', 'style' => 'color: white;', 'title' => 'Done Achievement')); ?>
                                 <?php echo anchor('/Achievement/pending_achievement/' . $ams->_id, '<span class="material-icons">close</span>', array('onclick' => "return confirm('Do you want status pending this achievement')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Pending Achievement')); ?>  
-                            </td>
-            
+                            </td> -->
+                                    
                         </tr>
+                        <!-- Modal Confirm Delete-->
+                        <div class="modal fade" id="delete_achievement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <h6>Confirm create to this activity.</h6>
+                                </div>
+                                <div class="modal-footer">
+                                      <button type="button" href="<?php echo 'http://[::1]/code_nosql/index.php/Achievement/delete/'.$ams->_id?>" class="btn btn-success">OK</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         <?php
                                 }
                             }
@@ -78,3 +103,11 @@
 
 </div>
 <!-- /.container-fluid -->
+<script>
+  /*
+   * Priyarat Bumrungkit 62160156
+   */
+  function show_modal(){
+    $('#delete_achievement').modal();
+  }
+</script>

@@ -34,12 +34,11 @@
             $_SESSION['menu'] = 'achievement_create';
             
             if($this->input->post('submit')){
-                $this->form_validation->set_rules('ach_name','Name achievement', 'trim|required');
+                $this->form_validation->set_rules('ach_name','Name activity', 'trim|required');
                 $this->form_validation->set_rules('ach_point','Point', 'trim|required');
-                $this->form_validation->set_rules('act_id','activity id', 'trim');
 
                 if($this->form_validation->run() !== false){
-                    $result = $this->M_achievement->create_achievement($this->input->post('ach_name'), $this->input->post('ach_point'), $this->input->post('act_id'));
+                    $result = $this->M_achievement->create_achievement($this->input->post('ach_name'), $this->input->post('ach_point'));
                         if($result === true){
                             redirect('Achievement/show_list');
                         }else{
@@ -51,9 +50,10 @@
                     $this->output('v_achievement_create', $data);
                 }
             }else{
-                $data['act'] = $this->M_activity->get_activity_list();              
-                $this->output('v_achievement_create', $data);
+                $this->output('v_achievement_create');
             }
+            
+            
         }
 
         function update($_id){
@@ -148,20 +148,6 @@
             }                         
         }
 
-        function use_activity($_id){
-            if($_id){
-                $this->M_activity->update_status_use_activity($_id);
-                $this->create();
-            }
-            // redirect('v_achievement_create');
-        }
-
-        function re_use_activity($_id){
-            if($_id){
-                $this->M_activity->update_re_status_use_activity($_id);
-                $this->create();
-            }
-            // redirect('v_achievement_create');
-        }
+        
 
     }

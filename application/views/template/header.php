@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <?php
+        ini_set('memory_limit', '1024M');
+    ?>
     <title>Admin</title>
 
     <!-- Custom fonts for this template -->
@@ -20,6 +22,13 @@
     <!-- Custom styles for this page -->
     <link href="<?php echo base_url().'assets/template/startbootstrap-sb-admin-2-gh-pages'?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    
+
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 
     <!-- Modal Add by Ice -->
 

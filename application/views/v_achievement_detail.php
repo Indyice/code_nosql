@@ -3,6 +3,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Achievement Detail</h1>
+        <?php echo anchor('/Activity/show_list_activity_re_use/' . $ach->_id, '<span class="material-icons">search</span>', array('class' => 'btn btn-primary btn-sm', 'style' => 'color: white;', 'title' => 'Detail')); ?>
     </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -32,6 +33,7 @@
                 $i++;
               ?>
                         <tr class="<?php echo $col_class; ?>">
+
                             <td style="text-align: center;"><?php echo $i; ?></td>
                             <td><?php echo $ams->act_name; ?></td>
                             <td style="text-align: center;"><?php echo $ams->act_point; ?></td>
@@ -59,6 +61,5 @@
             </div>
         </div>
     </div>
-
 </div>
-<!-- /.container-fluid -->
+
