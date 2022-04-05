@@ -126,7 +126,7 @@
             // $data['ach'] = $this->M_achievement->get_achievement($data['act']->ach_id);
             $total_point = $data['clu'] -> clu_point + $data['act'] -> act_point;
             $this->M_cluster->update_point_cluster($id_clu,$total_point);
-
+           
             if(isset($data['ach']->act_id)){
                 $check_status = 0;
                 $id_act = $data['ach']->act_id;
@@ -145,8 +145,9 @@
                 
                 if($check_status == $total){
                     $this->M_achievement->update_status_achievement($id_ach,1);
-                    $total_point = $data['clu'] -> clu_point + $data['ach']->ach_point;
-                    $this->M_cluster->update_point_cluster($id_clu,$total_point);
+                    $data['clu'] = $this->M_cluster->get_cluster($id_clu);
+                    $total_point2 = $data['clu'] -> clu_point + $data['ach']->ach_point;
+                    $this->M_cluster->update_point_cluster($id_clu,$total_point2);
                 }                 
             }           
             redirect('Achievement/get_act_by_id/'. $id_ach);
