@@ -1,9 +1,47 @@
+<style>
+ul li {
+    list-style: none;
+}
+</style>
+
 <!-- Begin Page Content -->
-<div class="container-fluid pt-4">
+<div class="container-fluid">
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Choose Activity</h1>
+        <h1 class="h4 mb-0 text-gray-800">Choose Activity</h1>
     </div>
+    <hr width="100%" color="696969">
+    <ul class="pl-2 row">
+        <li>
+            <i class="fa fa-home"></i>
+        </li>
+        &nbsp;
+        <li>
+            <i class="fa fa-angle-right pt-1"></i>
+        </li>
+        &nbsp;
+        <li>
+            <?php echo anchor('/Achievement/show_list', 'Achievement',array('style'=> 'text-decoration: none', 'class'=>'text-gray-600'));?>
+        </li>
+        &nbsp;
+        <li>
+            <i class="fa fa-angle-right pt-1"></i>
+        </li>
+        &nbsp;
+        <li>
+            <?php echo anchor('/Achievement/get_act_by_id/' . $ach->_id, 'Achievement Detail',array('style'=> 'text-decoration: none', 'class'=>'text-gray-600'));?>
+        </li>
+        &nbsp;
+        <li>
+            <i class="fa fa-angle-right pt-1"></i>
+        </li>
+        &nbsp;
+        <li>
+            <?php echo anchor('/Activity/show_list_activity_re_use/' . $ach->_id, 'Choose Activity',array('style'=> 'text-decoration: none', 'class'=>'text-gray-600'));?>
+        </li>
+    </ul>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -33,27 +71,27 @@
                     
                 $i++;
               ?>
-                        
-                           
-                <tr class="<?php echo $col_class; ?>">
-                    <td style="text-align: center;"><?php echo $i; ?></td>
-                    <td><?php echo $ams->act_name; ?></td>
-                    <td style="text-align: center;"><?php echo $ams->act_point; ?></td>
-                     <td class="table-actions" style="text-align: center;">
-                        <a href="<?php echo 'http://[::1]/code_nosql/index.php/Activity/use_activity/'.$ams->_id.'/'.$ach->_id?>">
-                            <span class="material-icons">done</span>
-                        </a>
-                        <a href="<?php echo 'http://[::1]/code_nosql/index.php/Activity/re_use_activity/'.$ams->_id.'/'.$ach->_id?>">
-                            <span class="material-icons">close</span>
-                        </a>
-                        <!-- <?php echo anchor('/Activity/use_activity/' . $ams->_id, '<span class="material-icons">done</span>', array('onclick' => "return confirm('Do you want status done this activity')", 'class' => 'btn btn-success btn-sm', 'style' => 'color: white;', 'title' => 'Done Activity')); ?>
+
+
+                        <tr class="<?php echo $col_class; ?>">
+                            <td style="text-align: center;"><?php echo $i; ?></td>
+                            <td><?php echo $ams->act_name; ?></td>
+                            <td style="text-align: center;"><?php echo $ams->act_point; ?></td>
+                            <td class="table-actions" style="text-align: center;">
+                                <a href="<?php echo 'http://[::1]/code_nosql/index.php/Activity/use_activity/'.$ams->_id.'/'.$ach->_id?>">
+                                    <span class="material-icons">done</span>
+                                </a>
+                                <a href="<?php echo 'http://[::1]/code_nosql/index.php/Activity/re_use_activity/'.$ams->_id.'/'.$ach->_id?>">
+                                    <span class="material-icons">close</span>
+                                </a>
+                                <!-- <?php echo anchor('/Activity/use_activity/' . $ams->_id, '<span class="material-icons">done</span>', array('onclick' => "return confirm('Do you want status done this activity')", 'class' => 'btn btn-success btn-sm', 'style' => 'color: white;', 'title' => 'Done Activity')); ?>
                         <?php echo anchor('/Activity/re_use_activity/' . $ams->_id, '<span class="material-icons">close</span>', array('onclick' => "return confirm('Do you want status pending this activity')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Pending Activity')); ?>   -->
-                    </td>
-                </tr>
-                            
-                            
-                        
-            <?php
+                            </td>
+                        </tr>
+
+
+
+                        <?php
                 }
             }
             ?>
@@ -68,4 +106,3 @@
         </div>
     </div>
 </div>
-

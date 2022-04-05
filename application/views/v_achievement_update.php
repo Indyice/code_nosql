@@ -1,13 +1,48 @@
-<!-- Edit Achievement -->
-<div class="row justify-content-center">
+<style>
+ul li {
+    list-style: none;
+}
+</style>
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h4 mb-0 text-gray-800">Achievement</h1>
+    </div>
+    <hr width="100%" color="696969">
+    <ul class="pl-2 row">
+        <li>
+            <i class="fa fa-home"></i>
+        </li>
+        &nbsp;
+        <li>
+            <i class="fa fa-angle-right pt-1"></i>
+        </li>
+        &nbsp;
+        <li>
+            <?php echo anchor('/Achievement/show_list', 'Achievement',array('style'=> 'text-decoration: none', 'class'=>'text-gray-600'));?>
+        </li>
+        &nbsp;
+        <li>
+            <i class="fa fa-angle-right pt-1"></i>
+        </li>
+        &nbsp;
+        <li>
+            <?php echo anchor('/Achievement/update/' . $ach->_id, 'Edit Achievement',array('style'=> 'text-decoration: none', 'class'=>'text-gray-600'));?>
+        </li>
+    </ul>
+
+    <!-- Edit Achievement -->
+    <div class="row justify-content-center">
         <div class="col-lg-10">
-          <div class="pricing card-group flex-column flex-md-row mb-3">
-            <div class="card card-pricing border-0 text-center mb-4">
-              <div class="card-header bg-transparent">
-                <h4 class="text-uppercase ls-1 text-primary display-4 mb-3">Edit Achievement</h4>
-              </div>
-              <div class="card-body px-lg-7">
-              <?php
+            <div class="pricing card-group flex-column flex-md-row mb-3">
+                <div class="card card-pricing border-0 text-center mb-4">
+                    <div class="card-header bg-transparent">
+                        <h4 class="text-uppercase ls-1 text-primary display-4 mb-3">Edit Achievement</h4>
+                    </div>
+                    <div class="card-body px-lg-7">
+                        <?php
                         if (isset($error)){
                         echo '<p style="color:red;">'.$error.'</p>';
                         }else{
@@ -21,7 +56,7 @@
 
                         <form>
                             <div class="text-primary" style="text-align: left;">
-                                <h5><label > Achievement Name</label></h5>
+                                <h5><label> Achievement Name</label></h5>
                             </div>
                             <div class="input-group mb-5">
                                 <input type="text" class="form-control" placeholder="Achievement Name" name="ach_name" value="<?php echo isset($ach)?$ach->ach_name:set_value('ach_name'); ?>">
@@ -34,48 +69,49 @@
                             </div>
                             <div class="card-footer" style="text-align: right;">
                                 <button type="button" class="btn btn-success btn-lg" onclick="show_modal()" style="height: 50px; width: 10%; text-align: center;">Edit</button>
-                                <?php echo anchor('/Activity/show_list', 'Cancel', array('class' => "btn btn-secondary btn-lg",'style' => "height: 50px; width: 10%;", 'type' => "button"));?>      
+                                <?php echo anchor('/Achievement/show_list', 'Cancel', array('class' => "btn btn-secondary btn-lg",'style' => "height: 50px; width: 12%;", 'type' => "button"));?>
                             </div>
 
 
-                          <!-- Modal Confirm Edit-->
-                          <div class="modal fade" id="edit_achievement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Confirm Edit</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
+                            <!-- Modal Confirm Edit-->
+                            <div class="modal fade" id="edit_achievement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirm Edit</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6>Confirm edit to this achievement.</h6>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" name="submit" id="submit" value="Submit" class="btn btn-success">Save</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                  <h6>Confirm edit to this achievement.</h6>
-                                </div>
-                                <div class="modal-footer">
-                                      <button type="submit" name="submit" id="submit" value="Submit" class="btn btn-success">Save</button>
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
                             </div>
-                          </div>
                         </form>
-                        <?php echo form_close(); ?>                 
-                   
-              </div>
-              
+                        <?php echo form_close(); ?>
+
+                    </div>
+
+                </div>
+
             </div>
-            
-          </div>
         </div>
+    </div>
 </div>
 
 
 
 <script>
-  /*
-   * Suwapat Saowarod 62160340
-   */
-  function show_modal(){
+/*
+ * Suwapat Saowarod 62160340
+ */
+function show_modal() {
     $('#edit_achievement').modal();
-  }
+}
 </script>

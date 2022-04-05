@@ -23,7 +23,7 @@
     <link href="<?php echo base_url().'assets/template/startbootstrap-sb-admin-2-gh-pages'?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    
+
 
     <!-- Sweet Alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -46,9 +46,9 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url().'assets/template/startbootstrap-sb-admin-2-gh-pages'?>/index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-icon">
+                    <i class="fa fa-user-circle"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
@@ -62,7 +62,7 @@
             </div>
 
             <!-- Nav Item - Activity Menu -->
-            <li class="nav-item <?php if ($_SESSION['menu'] == 'activity_show_list' || $_SESSION['menu'] == 'activity_create') echo 'active' ?>">
+            <li class="nav-item <?php if ($_SESSION['menu'] == 'activity_show_list' || $_SESSION['menu'] == 'activity_create'|| $_SESSION['menu'] == 'activity_update') echo 'active' ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-bullseye"></i>
                     <span>Activity</span>
@@ -73,14 +73,14 @@
                             <?php echo anchor('/Activity/show_list', 'Activity List', array('style'=> 'text-decoration: none'));?>
                         </div>
                         <div class="collapse-item <?php if ($_SESSION['menu'] == 'activity_create') echo 'active' ?>">
-                            <?php echo anchor('/Activity/create', 'Add Activity', array('style'=> 'text-decoration: none'));?>
+                            <?php echo anchor('/Activity/create', 'Create Activity', array('style'=> 'text-decoration: none'));?>
                         </div>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Achievement Menu -->
-            <li class="nav-item <?php if ($_SESSION['menu'] == 'achievement_show_list' || $_SESSION['menu'] == 'achievement_create') echo 'active' ?>">
+            <li class="nav-item <?php if ($_SESSION['menu'] == 'achievement_show_list' || $_SESSION['menu'] == 'achievement_create' || $_SESSION['menu'] == 'achievement_update' || $_SESSION['menu'] == 'achievement_detail') echo 'active' ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fa fa-trophy"></i>
                     <span>Achievement</span>
@@ -91,7 +91,7 @@
                             <?php echo anchor('/Achievement/show_list', 'Achievement List', array('style'=> 'text-decoration: none'));?>
                         </div>
                         <div class="collapse-item <?php if ($_SESSION['menu'] == 'achievement_create') echo 'active' ?>">
-                            <?php echo anchor('/Achievement/create', 'Add Achievement', array('style'=> 'text-decoration: none'));?>
+                            <?php echo anchor('/Achievement/create', 'Create Achievement', array('style'=> 'text-decoration: none'));?>
                         </div>
                     </div>
                 </div>
