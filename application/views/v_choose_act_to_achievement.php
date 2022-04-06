@@ -78,12 +78,15 @@ ul li {
                             <td><?php echo $ams->act_name; ?></td>
                             <td style="text-align: center;"><?php echo $ams->act_point; ?></td>
                             <td class="table-actions" style="text-align: center;">
-                                <a href="<?php echo 'http://[::1]/code_nosql/index.php/Activity/use_activity/'.$ams->_id.'/'.$ach->_id?>">
-                                    <span class="material-icons">done</span>
-                                </a>
-                                <a href="<?php echo 'http://[::1]/code_nosql/index.php/Activity/re_use_activity/'.$ams->_id.'/'.$ach->_id?>">
-                                    <span class="material-icons">close</span>
-                                </a>
+                                    <a href="<?php echo 'http://[::1]/code_nosql/index.php/Activity/use_activity/'.$ams->_id.'/'.$ach->_id?>">
+                                        <span class="material-icons">add_circle_outline</span>
+                                    </a>
+                                    <span class="material-icons">
+
+
+                                    <a href="<?php echo 'http://[::1]/code_nosql/index.php/Activity/re_use_activity/'.$ams->_id.'/'.$ach->_id?>">
+                                        <span class="material-icons">remove_circle_outline</span>
+                                    </a>
                                 <!-- <?php echo anchor('/Activity/use_activity/' . $ams->_id, '<span class="material-icons">done</span>', array('onclick' => "return confirm('Do you want status done this activity')", 'class' => 'btn btn-success btn-sm', 'style' => 'color: white;', 'title' => 'Done Activity')); ?>
                         <?php echo anchor('/Activity/re_use_activity/' . $ams->_id, '<span class="material-icons">close</span>', array('onclick' => "return confirm('Do you want status pending this activity')", 'class' => 'btn btn-danger btn-sm', 'style' => 'color: white;', 'title' => 'Pending Activity')); ?>   -->
                             </td>
